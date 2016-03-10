@@ -24,6 +24,14 @@ class Goal extends Model
         'curator_email',
     ];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['check_at', 'created_at', 'updated_at', 'deleted_at'];
+
+
     /* Relationships */
     public function pleas()
     {

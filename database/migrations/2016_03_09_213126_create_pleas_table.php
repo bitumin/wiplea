@@ -14,7 +14,17 @@ class CreatePleasTable extends Migration
     {
         Schema::create('pleas', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->text('text');
+            $table->boolean('success')->nullable()->default(NULL);
+
+            $table->integer('goal_id')->unsigned();
+            $table->foreign('goal_id')->references('id')->on('goals');
+            $table->integer('recipient_id')->unsigned();
+            $table->foreign('recipient_id')->references('id')->on('recipients');
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

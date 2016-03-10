@@ -14,7 +14,11 @@ class CreateReligionsTable extends Migration
     {
         Schema::create('religions', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('name')->unique();
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -14,7 +14,17 @@ class CreateRecipientsTable extends Migration
     {
         Schema::create('recipients', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('name');
+            $table->integer('pleas_received')->unsigned()->default(0);
+            $table->integer('pleas_granted')->unsigned()->default(0);
+            $table->integer('pleas_non_granted')->unsigned()->default(0);
+
+            $table->integer('religion_id')->unsigned();
+            $table->foreign('religion_id')->references('id')->on('religions');
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -63,3 +63,6 @@ crashlytics-build.properties
 /public/storage
 Homestead.yaml
 Homestead.json
+
+### Laravel packages, dev env only packages...
+_ide_helper.php

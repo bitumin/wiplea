@@ -22,6 +22,14 @@ class Plea extends Model
      */
     protected $hidden = [];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
+
     /* Relationships */
     public function recipient()
     {
