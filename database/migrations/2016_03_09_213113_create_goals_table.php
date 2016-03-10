@@ -18,8 +18,10 @@ class CreateGoalsTable extends Migration
             $table->string('text',50);
             $table->string('curator_email');
             $table->timestamp('check_at');
+            $table->string('check_token', 20)->nullable();
+            $table->boolean('check')->nullable()->default(NULL);
             $table->boolean('check_email_sent')->default(false);
-            $table->boolean('success')->nullable()->default(NULL);
+
 
             $table->timestamps();
             $table->softDeletes();

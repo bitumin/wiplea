@@ -26,6 +26,23 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
+Route::group([
+    'prefix' => 'api',
+    'middleware' => ['web']
+], function () {
+    Route::resource('religion', 'ReligionController', ['only' => [
+        'index', 'show'
+    ]]);
+    Route::resource('recipient', 'RecipientController', ['only' => [
+        'index', 'show'
+    ]]);
+    Route::resource('goal', 'GoalController', ['only' => [
+        'index', 'store', 'show', 'update'
+    ]]);
+    Route::resource('plea', 'PleaController', ['only' => [
+        'index', 'store', 'show'
+    ]]);
+    Route::resource('stat', 'StatController', ['only' => [
+        'index'
+    ]]);
 });
