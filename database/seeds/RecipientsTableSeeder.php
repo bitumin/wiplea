@@ -12,7 +12,7 @@ class RecipientsTableSeeder extends Seeder
     public function run()
     {
         foreach(config('seeders.recipients') as $religion => $recipients) {
-            $religion_id = \App\Religion::where('name', $religion)->first()->value('id');
+            $religion_id = \App\Religion::where('name', $religion)->first()->id;
             if(!empty($religion_id))
                 foreach($recipients as $recipient)
                     \App\Recipient::create([

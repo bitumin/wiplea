@@ -2,28 +2,30 @@
 
 /*
 |--------------------------------------------------------------------------
-| Routes File
+| Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you will register all of the routes in an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group([
+    'middleware' => ['web']
+], function () {
+    Route::get('/', function () {
+        $religions = \App\Religion::all();
+        $goals = \App\Goal::orderByRaw("RAND()")->take(100)->get();
+
+        return view('app', compact('religions', 'goals'));
+    });
+    Route::get('/view/recipient/religion/{religion}', function (\App\Religion $religion) {
+        $recipients = $religion->recipients;
+
+        return view('recipients', compact('recipients'));
+    });
 });
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| API Routes
 |--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
 */
 
 Route::group([

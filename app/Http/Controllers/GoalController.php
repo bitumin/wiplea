@@ -41,7 +41,7 @@ class GoalController extends Controller
         $new_goal = Goal::create($request->only(['text', 'curator_email', 'check_at']));
 
         if(isset($new_goal->id))
-            return \Response::json('New goal stored', 200);
+            return \Response::json($new_goal->toArray(), 200);
         return \Response::json('Unable to store new goal', 500);
     }
 
