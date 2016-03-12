@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Plea extends Model
 {
+    use SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,7 +23,7 @@ class Plea extends Model
      *
      * @var array
      */
-    protected $hidden = [];
+    protected $hidden = ['is_public'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -46,4 +49,8 @@ class Plea extends Model
     /* Mutators */
 
     /* Scopes */
+    public function scopePublic($query)
+    {
+        return $query->where('is_public', true);
+    }
 }

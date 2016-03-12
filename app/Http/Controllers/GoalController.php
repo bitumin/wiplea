@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Goal;
 
 use App\Http\Requests;
+use App\Http\Requests\GoalRandomRequest;
 use App\Http\Requests\GoalStoreRequest;
 use App\Http\Requests\GoalUpdateRequest;
 
@@ -55,6 +56,18 @@ class GoalController extends Controller
     public function show(Goal $goal)
     {
         return \Response::json($goal->toArray());
+    }
+
+
+    /**
+     * Display a random item of the specified resource.
+     *
+     * @param GoalRandomRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function random(GoalRandomRequest $request)
+    {
+        return \Response::json(Goal::all()->random($request->n)->toArray());
     }
 
     /**

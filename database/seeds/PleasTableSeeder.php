@@ -20,6 +20,7 @@ class PleasTableSeeder extends Seeder
                 \App\Plea::create([
                     'text' => $faker->text(),
                     'success' => ($goal->check_at < \Carbon\Carbon::now()) ? $faker->boolean(50) : null,
+                    'is_public' => $faker->boolean(50),
                     'goal_id' => $goal->id,
                     'recipient_id' => $recipients[array_rand($recipients)]
                 ]);

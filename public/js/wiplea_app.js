@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var debug = true;
+
     //Vars
     var recipientName = "";
     var recipientId = "";
@@ -22,16 +24,21 @@ $(document).ready(function() {
     var elTextareaPlea = $('#plea');
     var elInputGoalText = $('#text');
     var elInputGoalCurator = $('#curator_email');
+    var elInputPleaIsPublic = $('#is_public');
+    var elSectionRandomPlea = $('wiplea-random-plea');
+    var elSectionLoadingWiPlea = $('wiplea-loading');
+    var elSectionWiPleaStatistics = $('wiplea-statistics');
+
 
     //Start
     elLoading.hide();
     elFullpage.fullpage({ controlArrows: true });
-    $.fn.fullpage.setAllowScrolling(false, 'up, down');
+    $.fn.fullpage.setAllowScrolling(debug, 'up, down');
     $.fn.fullpage.moveSectionUp();
 
     //Religion section
     elReligion.click(function() {
-        elRecipientsWrapper.load("/view/recipient/religion/"+$(this).attr("data-id"), function() {
+        elRecipientsWrapper.load("/web/recipient/religion/"+$(this).attr("data-id"), function() {
             $.fn.fullpage.moveSectionUp();
         });
     });
@@ -87,6 +94,7 @@ $(document).ready(function() {
             "_token": elToken.val(),
             "goal_id": elInputGoalId.val(),
             "recipient_id": elInputRecipientId.val(),
+            "is_public": elInputPleaIsPublic.val(),
             "text": elTextareaPlea.val()
         }, function() {
             $.fn.fullpage.moveSectionUp();

@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PleaRandomRequest;
-use App\Http\Requests\PleaStoreRequest;
-use App\Plea;
+use App\Religion;
 use App\Http\Requests;
 
-class PleaController extends Controller
+class ReligionRecipientController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param Religion $religion
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Religion $religion)
     {
-        return \Response::json(Plea::public()->get()->toArray());
+        return \Response::json($religion->recipients->toArray());
     }
 
     /**
@@ -32,40 +31,24 @@ class PleaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param PleaStoreRequest|\Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PleaStoreRequest $request)
-    {
-        $new_plea = Plea::create($request->only(['text', 'is_public', 'goal_id', 'recipient_id']));
-
-        if(isset($new_plea->id))
-            return \Response::json('New plea stored', 200);
-        return \Response::json('Unable to store new plea', 500);
-    }
+//    public function store(Request $request)
+//    {
+//        //
+//    }
 
     /**
      * Display the specified resource.
      *
-     * @param Plea $plea
-     * @return \Illuminate\Http\Response
-     * @internal param int $id
-     */
-    public function show(Plea $plea)
-    {
-        return \Response::json($plea->toArray());
-    }
-
-    /**
-     * Display a random item of the specified resource.
-     *
-     * @param PleaRandomRequest $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function random(PleaRandomRequest $request)
-    {
-        return \Response::json(Plea::public()->get()->random($request->n)->toArray());
-    }
+//    public function show($id)
+//    {
+//        //
+//    }
 
     /**
      * Show the form for editing the specified resource.

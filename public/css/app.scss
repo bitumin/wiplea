@@ -34,8 +34,20 @@ h1 {
   height: 100%;
 }
 
-div.jqcloud a:hover {
-  color: #fff;
+html, body {
+  height: 100%;
+}
+
+.content-wrapper {
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+
+.main-wrapper {
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
 }
 
 #plea, #plea-wrapper {

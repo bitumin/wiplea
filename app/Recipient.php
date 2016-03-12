@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Recipient extends Model
 {
+    use SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -32,7 +34,7 @@ class Recipient extends Model
 
 
     /* Relationships */
-    public function recipients()
+    public function religion()
     {
         return $this->belongsTo('App\Religion');
     }

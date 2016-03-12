@@ -17,6 +17,7 @@ class CreatePleasTable extends Migration
 
             $table->text('text');
             $table->boolean('success')->nullable()->default(NULL);
+            $table->boolean('is_public')->default(false);
 
             $table->integer('goal_id')->unsigned();
             $table->foreign('goal_id')->references('id')->on('goals');
