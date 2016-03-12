@@ -26,6 +26,7 @@ $(document).ready(function() {
 
                 if(view === 'goals') {
                     $('#check_at').datepicker({
+                        autoclose: true,
                         format: "M d, yyyy",
                         weekStart: 1,
                         startDate: new Date(+new Date() + 86400000*2), //starts the day after tomorrow

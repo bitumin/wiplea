@@ -24,7 +24,7 @@
         </div>
         @else
         <div>
-            <div class="col-xs-12 col-md-6 text-center">
+            <div class="col-xs-12 text-center">
                 <h1>Statistics</h1>
                 <p>
                     Not enough data just yet...<br>
