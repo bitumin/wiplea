@@ -15,7 +15,7 @@ class Plea extends Model
      * @var array
      */
     protected $fillable = [
-        'text', 'goal_id', 'recipient_id',
+        'text', 'is_public', 'goal_id', 'recipient_id'
     ];
 
     /**
@@ -49,8 +49,15 @@ class Plea extends Model
     /* Mutators */
 
     /* Scopes */
+
+    /**
+     * Scope a query to only include public pleas.
+     *
+     * @param $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public function scopePublic($query)
     {
-        return $query->where('is_public', true);
+        return $query->where('is_public', 1);
     }
 }

@@ -5,8 +5,8 @@
     col-md-offset-3 col-md-6
     col-lg-offset-4 col-lg-4
     ">
-        Your plea to <span class="recipient-name"></span> has been sent!
+        Your plea to <span class="recipient-name"></span> has been sent!<br><br>
         <br>
-        <a href="javascript:" class="btn btn-block btn-info">Return to menu</a>
+        <a href="javascript:" class="btn-return-menu btn btn-block btn-info">Return to menu</a>
     </div>
 </div>

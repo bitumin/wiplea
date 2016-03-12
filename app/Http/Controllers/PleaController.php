@@ -16,7 +16,9 @@ class PleaController extends Controller
      */
     public function index()
     {
-        return \Response::json(Plea::public()->get()->toArray());
+        $plea = Plea::where('is_public', 1)->get()->toArray();
+
+        return \Response::json($plea);
     }
 
     /**
@@ -64,7 +66,7 @@ class PleaController extends Controller
      */
     public function random(PleaRandomRequest $request)
     {
-        return \Response::json(Plea::public()->get()->random($request->n)->toArray());
+        return \Response::json(Plea::where('is_public', 1)->get()->random($request->n)->toArray());
     }
 
     /**

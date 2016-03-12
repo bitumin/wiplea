@@ -15,11 +15,11 @@
             <input type="hidden" name="is_public" value="">
 
             <div class="form-group">
-                <textarea class="form-control" rows="5" name="text" maxlength="8000" required></textarea>
+                <textarea class="form-control" rows="10" name="text" maxlength="8000" required></textarea>
             </div>
 
             <div class="checkbox">
-                <label><input name="public" type="checkbox"> This plea is public, people can read it</label>
+                <label><input name="public" type="checkbox"> People can read this plea (is public)</label>
             </div>
 
             <button type="submit" class="btn btn-block btn-info">Send my plea!</button>

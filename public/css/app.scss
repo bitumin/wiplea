@@ -25,7 +25,10 @@ a:hover, a:focus {
 }
 
 h1 {
-  font-size: 70px;
+  font-size: 27px;
+  margin-bottom: 25px;
+  @media(max-width:767px){  font-size: 27px;  }
+  @media(min-width:768px){  font-size: 46px;  }
 }
 
 #religions-wrapper, #goals-wrapper {
