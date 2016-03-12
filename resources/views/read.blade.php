@@ -6,15 +6,23 @@
     ">
         @if(count($plea)>0)
         <div class="row">
-            <div class="col-xs-12 col-md-6 text-left">
-                {{$recipient->name}} ({{$religion->name}})
-            </div>
-            <div class="col-xs-12 col-md-6 text-left">
-                {{$goal->text}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 text-left">
+            <div class="col-xs-12 text-left breadcrumb">
+                <div class="row help-block">
+                    <div class="hidden-xs hidden-sm col-md-6 text-left">
+                        {{$recipient->name}} ({{$religion->name}})
+                    </div>
+                    <div class="hidden-xs hidden-sm col-md-6 text-right">
+                        {{$goal->text}}
+                    </div>
+                    <div class="col-xs-12 col-sm-12 hidden-md hidden-lg text-center">
+                        {{$recipient->name}} ({{$religion->name}})
+                    </div>
+                    <div class="col-xs-12 col-sm-12 hidden-md hidden-lg text-center">
+                        {{$goal->text}}
+                    </div>
+                </div>
+                <br>
+
                 {{$plea->text}}
             </div>
         </div>

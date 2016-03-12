@@ -23,7 +23,7 @@ Route::group([
     });
     Route::get('/goals', function () {
         $goals = \App\Goal::all();
-        if(count($goals)>0)
+        if(count($goals)>19)
             $goals = $goals->random(20);
 
         return view('goals', compact('goals'));
