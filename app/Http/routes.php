@@ -63,7 +63,7 @@ Route::group([
         return view('stats', compact('powerful_recipient', 'indiferent_recipient'));
     });
     Route::get('/read', function () {
-        $plea = \App\Plea::all();
+        $plea = \App\Plea::where('is_public', true)->get();
         $recipient = [];
         $religion = [];
         $goal = [];

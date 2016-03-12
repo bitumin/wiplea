@@ -4,7 +4,7 @@
 
     {{--Meta--}}
     <meta charset="UTF-8">
-    <meta name="description" content="Send your plea to the heavens and see what happens!">
+    <meta name="description" content="Send your plea to the heavens!">
     <meta name="keywords" content="plea, pleas, wiplea, prayer, prayers, gods, religions, god, religion">
     <meta name="author" content="Mitxel">
 
