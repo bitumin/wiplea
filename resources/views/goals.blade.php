@@ -4,6 +4,17 @@
     </div>
 </div>
 
+@if(!count($goals))
+    <div class="row text-center">
+        <div class="col-xs-12">
+            <p>
+                No one has registered a goal yet!<br>
+                Be the first one to do it!
+            </p>
+        </div>
+    </div>
+@endif
+
 <div class="row text-center">
 <?php $i=0; ?>
 @foreach($goals as $goal)
@@ -27,12 +38,14 @@
 <div class="row text-center">
     <div class="col-xs-12">
         <br>
+        @if(count($goals)===20)
         <a href="javascript:" class="btn btn-info btn-block btn-more-goals">
             Load more goals
         </a>
+        @endif
         <br>
         <a href="javascript:" class="btn btn-info btn-block" data-toggle="modal" data-target="#modal-add-goal">
-            ...or add a new goal
+            Add a new goal
         </a>
     </div>
 </div>
@@ -49,7 +62,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="text">Your goal:</label>
-                        <input id="text" name="text" class="form-control" type="text" placeholder="Donald Trump becomes president of the USA." required>
+                        <input id="text" name="text" class="form-control" type="text" placeholder="Donald Trump becomes president of the USA." required maxlength="50">
                         <p class="help-block">Set your own goal</p>
                     </div>
                     <div class="form-group">

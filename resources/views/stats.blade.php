@@ -4,6 +4,8 @@
     col-md-offset-2 col-md-8
     col-lg-offset-2 col-lg-8
     ">
+
+        @if(!empty($powerful_recipient) && !empty($indiferent_recipient))
         <div class="row">
             <div class="col-xs-12 col-md-6 text-center">
                 <h1>Statistics</h1>
@@ -20,6 +22,18 @@
                 <p>More stats coming soon...</p>
             </div>
         </div>
+        @else
+        <div>
+            <div class="col-xs-12 col-md-6 text-center">
+                <h1>Statistics</h1>
+                <p>
+                    Not enough data just yet...<br>
+                    Come back in few days!
+                </p>
+            </div>
+        </div>
+        @endif
+
         <div class="row">
             <div class="col-xs-12">
                 <br>

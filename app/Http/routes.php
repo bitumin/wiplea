@@ -22,7 +22,9 @@ Route::group([
         return view('recipients', compact('recipients'));
     });
     Route::get('/goals', function () {
-        $goals = \App\Goal::all()->random(20);
+        $goals = \App\Goal::all();
+        if(count($goals)>0)
+            $goals = $goals->random(20);
 
         return view('goals', compact('goals'));
     });
@@ -36,9 +38,12 @@ Route::group([
             GROUP BY recipient_id, success
             ORDER BY count DESC;
         ');
-        $powerful_recipient = \App\Recipient::findOrFail($most_powerful_recipients[0]->recipient_id);
-        $powerful_recipient->religion_name = $powerful_recipient->religion->name;
-        $powerful_recipient->stat = $most_powerful_recipients[0]->count.' pleas satisfied!';
+        $powerful_recipient = [];
+        if(count($most_powerful_recipients)>0) {
+            $powerful_recipient = \App\Recipient::findOrFail($most_powerful_recipients[0]->recipient_id);
+            $powerful_recipient->religion_name = $powerful_recipient->religion->name;
+            $powerful_recipient->stat = $most_powerful_recipients[0]->count . ' pleas satisfied!';
+        }
 
         $most_indiferent_recipients = DB::select('
             SELECT recipient_id, COUNT(*) as count
@@ -47,18 +52,27 @@ Route::group([
             GROUP BY recipient_id, success
             ORDER BY count DESC;
         ');
-        $indiferent_recipient = \App\Recipient::findOrFail($most_indiferent_recipients[0]->recipient_id);
-        $indiferent_recipient->religion_name = $indiferent_recipient->religion->name;
-        $indiferent_recipient->stat = $most_indiferent_recipients[0]->count.' pleas unheard.';
+
+        $indiferent_recipient = [];
+        if(count($most_indiferent_recipients)>0) {
+            $indiferent_recipient = \App\Recipient::findOrFail($most_indiferent_recipients[0]->recipient_id);
+            $indiferent_recipient->religion_name = $indiferent_recipient->religion->name;
+            $indiferent_recipient->stat = $most_indiferent_recipients[0]->count . ' pleas unheard.';
+        }
 
         return view('stats', compact('powerful_recipient', 'indiferent_recipient'));
     });
     Route::get('/read', function () {
-        $plea = \App\Plea::all()->random();
-        $recipient = $plea->recipient;
-        $religion = $recipient->religion;
-        $goal = $plea->goal;
-
+        $plea = \App\Plea::all();
+        $recipient = [];
+        $religion = [];
+        $goal = [];
+        if(count($plea)>0) {
+            $plea = $plea->random();
+            $recipient = $plea->recipient;
+            $religion = $recipient->religion;
+            $goal = $plea->goal;
+        }
         return view('read', compact('plea', 'recipient', 'religion', 'goal'));
     });
 });
