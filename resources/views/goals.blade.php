@@ -8,8 +8,8 @@
     <div class="row text-center">
         <div class="col-xs-12">
             <p>
-                No one has registered a goal yet!<br>
-                Be the first one to do it!
+                No goals in sight.<br>
+                Register your own goal!
             </p>
         </div>
     </div>
