@@ -6,89 +6,25 @@
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () { return view('main'); });
-Route::get('check/goal', function (\App\Http\Requests\CheckGoalRequest $request) {
-    $goal = \App\Goal::where('id', $request->id)
-        ->where('check_email_sent', true)
-        ->whereNull('check')
-        ->first();
-    if(count($goal)>0) {
-        $goal->check = $request->check;
-
-        if($goal->save())
-            return \Response::json('Goal updated. Thanks for checking your goal!', 200);
-    }
-
-    return \Response::json('Unable to check goal.', 500);
+Route::group([
+    'middleware' => ['web']
+], function () {
+    Route::get('/', 'WebAppController@main');
+    Route::get('/check/goal', 'WebAppController@checkGoal');
 });
+
 Route::group([
     'prefix' => 'view',
     'middleware' => ['web']
 ], function () {
-    Route::get('/menu', function () { return view('menu'); });
-    Route::get('/religions', function () {
-        $religions = \App\Religion::all();
-        return view('religions', compact('religions'));
-    });
-    Route::get('/recipients/{religion}', function (\App\Religion $religion) {
-        $recipients = $religion->recipients;
-
-        return view('recipients', compact('recipients'));
-    });
-    Route::get('/goals', function () {
-        $goals = \App\Goal::all();
-        if(count($goals)>19)
-            $goals = $goals->random(20);
-
-        return view('goals', compact('goals'));
-    });
-    Route::get('/plea', function () { return view('plea'); });
-    Route::get('/done', function () { return view('done'); });
-    Route::get('/stats', function () {
-        $most_powerful_recipients = DB::select('
-            SELECT recipient_id, COUNT(*) as count
-            FROM pleas
-            WHERE success IS TRUE
-            GROUP BY recipient_id, success
-            ORDER BY count DESC;
-        ');
-        $powerful_recipient = [];
-        if(count($most_powerful_recipients)>0) {
-            $powerful_recipient = \App\Recipient::findOrFail($most_powerful_recipients[0]->recipient_id);
-            $powerful_recipient->religion_name = $powerful_recipient->religion->name;
-            $powerful_recipient->stat = $most_powerful_recipients[0]->count . ' pleas satisfied!';
-        }
-
-        $most_indiferent_recipients = DB::select('
-            SELECT recipient_id, COUNT(*) as count
-            FROM pleas
-            WHERE success IS FALSE
-            GROUP BY recipient_id, success
-            ORDER BY count DESC;
-        ');
-
-        $indiferent_recipient = [];
-        if(count($most_indiferent_recipients)>0) {
-            $indiferent_recipient = \App\Recipient::findOrFail($most_indiferent_recipients[0]->recipient_id);
-            $indiferent_recipient->religion_name = $indiferent_recipient->religion->name;
-            $indiferent_recipient->stat = $most_indiferent_recipients[0]->count . ' pleas unheard.';
-        }
-
-        return view('stats', compact('powerful_recipient', 'indiferent_recipient'));
-    });
-    Route::get('/read', function () {
-        $plea = \App\Plea::where('is_public', true)->get();
-        $recipient = [];
-        $religion = [];
-        $goal = [];
-        if(count($plea)>0) {
-            $plea = $plea->random();
-            $recipient = $plea->recipient;
-            $religion = $recipient->religion;
-            $goal = $plea->goal;
-        }
-        return view('read', compact('plea', 'recipient', 'religion', 'goal'));
-    });
+    Route::get('/menu', 'WebAppController@menu');
+    Route::get('/religions', 'WebAppController@religions');
+    Route::get('/recipients/{religion}', 'WebAppController@recipients');
+    Route::get('/goals', 'WebAppController@goals');
+    Route::get('/plea', 'WebAppController@plea');
+    Route::get('/done', 'WebAppController@done');
+    Route::get('/stats', 'WebAppController@stats');
+    Route::get('/read', 'WebAppController@read');
 });
 
 /*

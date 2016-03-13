@@ -58,6 +58,6 @@ class Plea extends Model
      */
     public function scopePublic($query)
     {
-        return $query->where('is_public', 1);
+        return $query->where('is_public', true);
     }
 }
