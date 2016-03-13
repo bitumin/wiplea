@@ -12,5 +12,13 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix.sass([
+        'wiplea_app.scss'
+    ], 'public/css');
+
+    mix.scripts([
+        'wiplea_app.js'
+    ], 'public/js');
+
+    mix.version(['css/app.css', 'js/all.js']);
 });
