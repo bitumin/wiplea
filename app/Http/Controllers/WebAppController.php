@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Plea;
 use App\Recipient;
 use App\Religion;
+use Carbon\Carbon;
 
 class WebAppController extends Controller
 {
@@ -70,7 +71,7 @@ class WebAppController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function goals() {
-        $goals = Goal::all();
+        $goals = Goal::where('check_at','>',Carbon::tomorrow())->get();
         if(count($goals)>19)
             $goals = $goals->random(20);
 
