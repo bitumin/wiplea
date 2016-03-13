@@ -7,6 +7,20 @@
 */
 
 Route::get('/', function () { return view('main'); });
+Route::get('check/goal', function (\App\Http\Requests\CheckGoalRequest $request) {
+    $goal = \App\Goal::where('id', $request->id)
+        ->where('check_email_sent', true)
+        ->whereNull('check')
+        ->first();
+    if(count($goal)>0) {
+        $goal->check = $request->check;
+
+        if($goal->save())
+            return \Response::json('Goal updated. Thanks for checking your goal!', 200);
+    }
+
+    return \Response::json('Unable to check goal.', 500);
+});
 Route::group([
     'prefix' => 'view',
     'middleware' => ['web']
