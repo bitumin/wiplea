@@ -17,6 +17,10 @@
         <a class="btn-menu-read btn btn-info btn-block" href="javascript:">
             Read a random plea
         </a>
+        <br>
+        <a class="btn btn-warning btn-block" href="mailto:check@wiplea.com">
+            Make a suggestion/report errors
+        </a>
 
     </div>
 </div>
