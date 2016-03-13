@@ -23,11 +23,11 @@
     </div>
     <br><br><br>
     <div style="text-align: center">
-        <a style="padding:15px;background-color:#1E90FF;color:#ffffff;" href="http://wiplea.com/check/goal?id={{$goal->id}}}&check_token={{$goal->check_token}}&check=1">
+        <a style="padding:15px;background-color:#1E90FF;color:#ffffff;" href="http://wiplea.com/check/goal?id={{$id}}&check_token={{$check_token}}&check=1">
             Yes, it has become true
         </a>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <a style="padding:15px;background-color:#1E90FF;color:#ffffff;" href="http://wiplea.com/check/goal?id={{$goal->id}}}&check_token={{$goal->check_token}}&check=0">
+        <a style="padding:15px;background-color:#1E90FF;color:#ffffff;" href="http://wiplea.com/check/goal?id={{$id}}&check_token={{$check_token}}&check=0">
             No, it has not become true
         </a>
     </div>
