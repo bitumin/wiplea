@@ -66,15 +66,15 @@
                         <p class="help-block">Set your own goal</p>
                     </div>
                     <div class="form-group">
-                        <label for="check_at">Choose date:</label>
+                        <label for="check_at">Check date:</label>
                         <input id="check_at" name="check_at" class="form-control" type="text" placeholder="Nov 8, 2016" required>
-                        <p class="help-block">Date when you'll know the goal has become true</p>
+                        <p class="help-block">Date when you'll know if the goal has become true</p>
                     </div>
                     <div class="form-group">
                         <label for="curator_email">E-mail:</label>
                         <input id="curator_email" name="curator_email" class="form-control" type="email" placeholder="my@email.com" required>
                         <p class="help-block">
-                            On the selected date you will receive an email to check if your goal has become true.
+                            You'll receive an email to check if your goal has become true.
                         </p>
                     </div>
                 </div>
