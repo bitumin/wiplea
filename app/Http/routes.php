@@ -10,21 +10,20 @@ Route::group([
     'middleware' => ['web']
 ], function () {
     Route::get('/', 'WebAppController@main');
-    Route::get('/check/goal', 'WebAppController@checkGoal');
 });
 
 Route::group([
     'prefix' => 'view',
     'middleware' => ['web']
 ], function () {
-    Route::get('/menu', 'WebAppController@menu');
-    Route::get('/religions', 'WebAppController@religions');
-    Route::get('/recipients/{religion}', 'WebAppController@recipients');
-    Route::get('/goals', 'WebAppController@goals');
-    Route::get('/plea', 'WebAppController@plea');
-    Route::get('/done', 'WebAppController@done');
-    Route::get('/stats', 'WebAppController@stats');
-    Route::get('/read', 'WebAppController@read');
+    Route::get('menu', 'WebAppController@menu');
+    Route::get('religions', 'WebAppController@religions');
+    Route::get('recipients/{religion}', 'WebAppController@recipients');
+    Route::get('goals', 'WebAppController@goals');
+    Route::get('plea', 'WebAppController@plea');
+    Route::get('done', 'WebAppController@done');
+    Route::get('stats', 'WebAppController@stats');
+    Route::get('read', 'WebAppController@read');
 });
 
 /*
@@ -32,6 +31,12 @@ Route::group([
 | API Routes
 |--------------------------------------------------------------------------
 */
+
+Route::group([
+    'middleware' => ['web']
+], function () {
+    Route::get('check/goal', 'WebAppController@checkGoal');
+});
 
 Route::group([
     'prefix' => 'api',

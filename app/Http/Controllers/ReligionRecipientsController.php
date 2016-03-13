@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Religion;
 use App\Http\Requests;
 
-class ReligionRecipientController extends Controller
+class ReligionRecipientsController extends Controller
 {
     /**
      * Display a listing of the resource.
