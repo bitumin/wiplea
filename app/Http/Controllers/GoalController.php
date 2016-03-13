@@ -58,18 +58,6 @@ class GoalController extends Controller
         return \Response::json($goal->toArray());
     }
 
-
-    /**
-     * Display a random item of the specified resource.
-     *
-     * @param GoalRandomRequest $request
-     * @return \Illuminate\Http\Response
-     */
-    public function random(GoalRandomRequest $request)
-    {
-        return \Response::json(Goal::all()->random($request->n)->toArray());
-    }
-
     /**
      * Show the form for editing the specified resource.
      *

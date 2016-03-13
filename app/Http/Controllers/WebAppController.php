@@ -134,13 +134,13 @@ class WebAppController extends Controller
      */
     public function read()
     {
-        $plea = Plea::where('is_public', true)->get();
+        $plea = Plea::isPublic()->get();
         $recipient = [];
         $religion = [];
         $goal = [];
 
         if(count($plea)>0) {
-            $plea = $plea->random();
+            $plea = $plea->random(1);
             $recipient = $plea->recipient;
             $religion = $recipient->religion;
             $goal = $plea->goal;

@@ -56,7 +56,7 @@ class Plea extends Model
      * @param $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopePublic($query)
+    public function scopeIsPublic($query)
     {
         return $query->where('is_public', true);
     }

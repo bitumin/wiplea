@@ -38,6 +38,9 @@ Route::group([
     'middleware' => ['web']
 ], function () {
 
+    /*Random controller*/
+    Route::get('random', 'RandomController@randomItems');
+
     /*Religions*/
     Route::resource('religion', 'ReligionController', ['only' => [
         'index', 'show'
@@ -49,13 +52,11 @@ Route::group([
     ]]);
 
     /*Goals*/
-    Route::get('goal/random/{n}', 'GoalController@random');
     Route::resource('goal', 'GoalController', ['only' => [
         'index', 'store', 'show', 'update'
     ]]);
 
     /*Pleas*/
-    Route::get('plea/random/{n}', 'PleaController@random');
     Route::resource('plea', 'PleaController', ['only' => [
         'index', 'store', 'show'
     ]]);

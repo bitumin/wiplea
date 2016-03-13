@@ -16,7 +16,7 @@ class PleaController extends Controller
      */
     public function index()
     {
-        $plea = Plea::where('is_public', 1)->get()->toArray();
+        $plea = Plea::isPublic()->get()->toArray();
 
         return \Response::json($plea);
     }
@@ -56,17 +56,6 @@ class PleaController extends Controller
     public function show(Plea $plea)
     {
         return \Response::json($plea->toArray());
-    }
-
-    /**
-     * Display a random item of the specified resource.
-     *
-     * @param PleaRandomRequest $request
-     * @return \Illuminate\Http\Response
-     */
-    public function random(PleaRandomRequest $request)
-    {
-        return \Response::json(Plea::where('is_public', 1)->get()->random($request->n)->toArray());
     }
 
     /**

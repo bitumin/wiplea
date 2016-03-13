@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class GoalRandomRequest extends Request
+class RandomRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,7 @@ class GoalRandomRequest extends Request
     public function rules()
     {
         return [
+            'table' => 'required|string|in:goals,pleas',
             'n' => 'required|numeric|min:1|max:100',
         ];
     }
