@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            $today_checks = Goal::where('check_at','<=',Carbon::today())
+            $today_checks = Goal::where('check_at','<=',Carbon::now())
                 ->where('check_email_sent', false)
                 ->get();
 
