@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Goal;
-
 use App\Http\Requests;
 use App\Http\Requests\GoalRandomRequest;
 use App\Http\Requests\GoalStoreRequest;

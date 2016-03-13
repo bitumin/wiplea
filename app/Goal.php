@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -15,7 +16,7 @@ class Goal extends Model
      * @var array
      */
     protected $fillable = [
-        'text', 'curator_email', 'check_date',
+        'text', 'curator_email', 'check_at',
     ];
 
     /**
@@ -44,6 +45,16 @@ class Goal extends Model
     /* Accessors */
 
     /* Mutators */
+    /**
+     * Set the correctly formatted check at date.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function setCheckAtAttribute($value)
+    {
+        $this->attributes['check_at'] = Carbon::createFromTimestampUTC(strtotime($value));
+    }
 
     /* Scopes */
 }

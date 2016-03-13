@@ -18,7 +18,7 @@ return [
 
     'recipients' => [
         'Christianity' => [
-            'God', 'Jesus', 'Mary'
+            'God', 'Jesus', 'Mother Mary'
         ],
         'Islam' => [
             'Allah'
