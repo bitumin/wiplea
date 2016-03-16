@@ -9,7 +9,7 @@
     <meta name="author" content="Mitxel">
 
     {{--Title--}}
-    <title>Wiplea</title>
+    <title>wiPlea</title>
 
     {{--Favicon--}}
     {{--<link rel="icon" type="image/png" href="" />--}}
