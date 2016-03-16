@@ -11,7 +11,7 @@
         </a>
         <br>
         <a class="btn-menu-stats btn btn-info btn-block" href="javascript:">
-            Pleas statistics
+            Plea statistics
         </a>
         <br>
         <a class="btn-menu-read btn btn-info btn-block" href="javascript:">
