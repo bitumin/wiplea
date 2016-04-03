@@ -18,7 +18,7 @@ class GoalsTableSeeder extends Seeder
                 \App\Goal::create([
                     'text' => $faker->text(50),
                     'curator_email' => 'moriana.mitxel@gmail.com',
-                    'check_at' => $faker->dateTimeBetween('-1 year','1 year')
+                    'check_at' => \Carbon\Carbon::createFromTimestampUTC($faker->dateTimeBetween('-1 year','1 year')->getTimestamp())
                 ]);
             }
         } else {

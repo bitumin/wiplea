@@ -20,6 +20,8 @@
     </div>
     <div style="text-align: center">
         It's time to check if your goals has become true!
+        <br><br>
+        <span style="font-weight:bold;font-size:16px;">{{$text}}</span>
     </div>
     <br><br><br>
     <div style="text-align: center">
