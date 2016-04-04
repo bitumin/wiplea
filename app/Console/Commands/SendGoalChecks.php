@@ -46,7 +46,8 @@ class SendGoalChecks extends Command
             $data = $goal->toArray();
             \Mail::queue('emails.check_goal', $data, function ($m) use ($goal) {
                 $m->from('check@wiplea.com', 'wiPlea');
-                $m->to($goal->curator_email, 'wiPlea user')->subject('Check your wiPlea goal!');
+                $m->to($goal->curator_email, 'wiPlea user')
+                    ->subject('Check your wiPlea goal #'.$goal->id.'!');
             });
             $goal->check_email_sent = 1;
             $goal->save();

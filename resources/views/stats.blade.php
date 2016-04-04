@@ -5,20 +5,24 @@
     col-lg-offset-2 col-lg-8
     ">
 
-        @if(!empty($powerful_recipient) && !empty($indiferent_recipient))
+        @if(!empty($powerful_recipient) || !empty($indiferent_recipient))
         <div class="row">
-            <div class="col-xs-12 col-md-6 text-center">
+            <div class="col-xs-12 text-center">
                 <h1>Statistics</h1>
+                @if(!empty($powerful_recipient))
                 <p>
                     {{$powerful_recipient->name}} ({{$powerful_recipient['religion_name']}})
                     <br>The Omnipotent
                     <br>{{$powerful_recipient['stat']}}
                 </p>
+                @endif
+                @if(!empty($indiferent_recipient))
                 <p>
                     {{$indiferent_recipient->name}} ({{$indiferent_recipient['religion_name']}})
                     <br>The Indifferent
                     <br>{{$indiferent_recipient['stat']}}
                 </p>
+                @endif
                 <p>More stats coming soon...</p>
             </div>
         </div>
