@@ -99,35 +99,37 @@ class WebAppController extends Controller
      */
     public function stats()
     {
-        $most_powerful_recipients = \DB::select('
+        $most_powerful_recipient = \DB::select('
             SELECT recipient_id, COUNT(*) as count
             FROM pleas
             WHERE success IS TRUE
             GROUP BY recipient_id, success
-            ORDER BY count DESC;
+            ORDER BY count DESC
+            LIMIT 1;
         ');
         $powerful_recipient = [];
-        if(count($most_powerful_recipients)>0) {
-            $powerful_recipient = \App\Recipient::findOrFail($most_powerful_recipients[0]->recipient_id);
+        if(count($most_powerful_recipient)>0) {
+            $powerful_recipient = Recipient::findOrFail($most_powerful_recipient[0]->recipient_id);
             $powerful_recipient->religion_name = $powerful_recipient->religion->name;
-            $powerful_recipient->stat = $most_powerful_recipients[0]->count . ' pleas satisfied!';
+            $powerful_recipient->stat = $most_powerful_recipient[0]->count . ' pleas satisfied!';
         }
 
-        $most_indiferent_recipients = \DB::select('
+        $most_indifferent_recipient = \DB::select('
             SELECT recipient_id, COUNT(*) as count
             FROM pleas
             WHERE success IS FALSE
             GROUP BY recipient_id, success
-            ORDER BY count DESC;
+            ORDER BY count DESC
+            LIMIT 1;
         ');
-        $indiferent_recipient = [];
-        if(count($most_indiferent_recipients)>0) {
-            $indiferent_recipient = Recipient::findOrFail($most_indiferent_recipients[0]->recipient_id);
-            $indiferent_recipient->religion_name = $indiferent_recipient->religion->name;
-            $indiferent_recipient->stat = $most_indiferent_recipients[0]->count . ' pleas unheard.';
+        $indifferent_recipient = [];
+        if(count($most_indifferent_recipient)>0) {
+            $indifferent_recipient = Recipient::findOrFail($most_indifferent_recipient[0]->recipient_id);
+            $indifferent_recipient->religion_name = $indifferent_recipient->religion->name;
+            $indifferent_recipient->stat = $most_indifferent_recipient[0]->count . ' pleas unheard.';
         }
 
-        return view('stats', compact('powerful_recipient', 'indiferent_recipient'));
+        return view('stats', compact('powerful_recipient', 'indifferent_recipient'));
     }
 
     /**

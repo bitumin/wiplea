@@ -5,7 +5,7 @@
     col-lg-offset-2 col-lg-8
     ">
 
-        @if(!empty($powerful_recipient) || !empty($indiferent_recipient))
+        @if(!empty($powerful_recipient) || !empty($indifferent_recipient))
         <div class="row">
             <div class="col-xs-12 text-center">
                 <h1>Statistics</h1>
@@ -16,11 +16,11 @@
                     <br>{{$powerful_recipient['stat']}}
                 </p>
                 @endif
-                @if(!empty($indiferent_recipient))
+                @if(!empty($indifferent_recipient))
                 <p>
-                    {{$indiferent_recipient->name}} ({{$indiferent_recipient['religion_name']}})
+                    {{$indifferent_recipient->name}} ({{$indifferent_recipient['religion_name']}})
                     <br>The Indifferent
-                    <br>{{$indiferent_recipient['stat']}}
+                    <br>{{$indifferent_recipient['stat']}}
                 </p>
                 @endif
                 <p>More stats coming soon...</p>
