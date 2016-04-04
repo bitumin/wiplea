@@ -30,11 +30,18 @@ class WebAppController extends Controller
             ->where('check_email_sent', true)
             ->whereNull('check')
             ->first();
+
         if(count($goal)>0) {
             $goal->check = $request->check;
 
-            if($goal->save())
+            if($goal->save()) {
+                //Update all the pleas that depend on this goal
+                foreach(Plea::where('goal_id', $goal->id)->get() as $plea) {
+                    $plea->success = $request->check;
+                }
+
                 return \Response::json('Goal updated. Thanks for checking your goal!', 200);
+            }
         }
 
         return \Response::json('Unable to check goal.', 500);

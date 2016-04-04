@@ -24,7 +24,7 @@ class ApiTest extends TestCase
         $this->get('api/recipient')->seeJson();
         $this->get('api/goal')->seeJson();
         $this->get('api/plea')->seeJson();
-        $this->get('api/stat')->seeJson();
+//        $this->get('api/stat')->seeJson();
         $this->get('api/religion/1/recipient')->seeJson();
 
         /*Show*/
