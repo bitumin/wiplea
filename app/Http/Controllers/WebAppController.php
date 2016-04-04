@@ -128,7 +128,9 @@ class WebAppController extends Controller
             $indifferent_recipient->religion_name = $indifferent_recipient->religion->name;
             $indifferent_recipient->stat = $most_indifferent_recipient[0]->count . ' pleas unheard.';
         }
-
+        
+        \Log::info('Showing Powerful Recipient: '.implode(" ", $powerful_recipient));
+        \Log::info('Showing Indifferent Recipient: '.implode(" ", $indifferent_recipient));
         return view('stats', compact('powerful_recipient', 'indifferent_recipient'));
     }
 
