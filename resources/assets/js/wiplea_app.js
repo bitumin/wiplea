@@ -34,6 +34,10 @@ $(document).ready(function() {
                         todayHighlight: true
                     });
                 }
+                
+                if(view === 'done' && g.recipient) {
+                    $('.recipient-name').text(g.recipient);
+                }
 
                 elMain.fadeIn();
             });
