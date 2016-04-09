@@ -44,6 +44,7 @@ class SendGoalChecks extends Command
 
         foreach($today_checks as $goal) {
             $data = $goal->toArray();
+            $data['check_token'] = $goal->check_token;
             \Mail::queue('emails.check_goal', $data, function ($m) use ($goal) {
                 $m->from('check@wiplea.com', 'wiPlea');
                 $m->to($goal->curator_email, 'wiPlea user')

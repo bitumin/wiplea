@@ -15,18 +15,14 @@ class Goal extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'text', 'curator_email', 'check_at',
-    ];
+    protected $fillable = [ 'text', 'curator_email', 'check_at' ];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'curator_email',
-    ];
+    protected $hidden = [ 'curator_email', 'check_token' ];
 
     /**
      * The attributes that should be mutated to dates.
